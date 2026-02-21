@@ -1,0 +1,3365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STC Bank — 2026: A Financial Odyssey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #4B1FA8;
+    --deep-purple: #1A0540;
+    --teal: #00BFA5;
+    --teal-dim: #007A6A;
+    --gold: #C9A84C;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+    --star-white: rgba(255,255,255,0.85);
+    --void: #050310;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── STAR FIELD ─── */
+  .starfield {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d, 4s) ease-in-out infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(5,3,16,0.95), transparent);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--purple);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .nav-wordmark {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(75,31,168,0.3);
+    animation: rotate var(--spd, 40s) linear infinite;
+  }
+
+  .hero-orbit-ring:nth-child(1) { width: 500px; height: 500px; --spd: 60s; }
+  .hero-orbit-ring:nth-child(2) { width: 750px; height: 750px; --spd: 80s; border-color: rgba(0,191,165,0.15); }
+  .hero-orbit-ring:nth-child(3) { width: 1050px; height: 1050px; --spd: 120s; border-color: rgba(75,31,168,0.1); }
+
+  .hero-orbit-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    top: 0; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: 0 0 12px var(--teal);
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-center {
+    position: relative;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 2rem;
+    animation: heroReveal 2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    animation: heroReveal 2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-title {
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-year {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1rem, 3vw, 2rem);
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.5em;
+    margin-bottom: 2.5rem;
+    display: block;
+  }
+
+  .hero-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 3rem;
+    direction: rtl;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--teal);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+  }
+
+  .hero-cta:hover { color: var(--void); }
+  .hero-cta:hover::before { transform: translateX(0); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.3;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.6; transform: translateX(-50%) translateY(6px); }
+  }
+
+  .hero-scroll span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, white, transparent);
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── OPENING CRAWL ─── */
+  .crawl-section {
+    padding: 10rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .crawl-inner {
+    max-width: 700px;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .crawl-card {
+    border: 1px solid rgba(75,31,168,0.4);
+    padding: 4rem;
+    background: rgba(75,31,168,0.05);
+    position: relative;
+  }
+
+  .crawl-card::before, .crawl-card::after {
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--teal);
+    border-style: solid;
+  }
+
+  .crawl-card::before {
+    top: -1px; left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .crawl-card::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  .crawl-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .crawl-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.5rem;
+  }
+
+  .crawl-text strong {
+    color: white;
+    font-weight: 600;
+  }
+
+  .crawl-text em {
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  .crawl-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    direction: rtl;
+    margin-top: 2rem;
+    line-height: 2;
+  }
+
+  /* ─── ACT DIVIDER ─── */
+  .act-divider {
+    padding: 5rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .act-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(75,31,168,0.5), transparent);
+  }
+
+  .act-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--purple);
+    white-space: nowrap;
+  }
+
+  /* ─── ACT I ─── */
+  .act-one {
+    padding: 0 4rem 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .act-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .act-text h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .act-text h2 em { font-style: italic; color: var(--teal); }
+
+  .act-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .act-text .pull-quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--cream);
+    border-left: 2px solid var(--teal);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    line-height: 1.6;
+  }
+
+  .act-visual {
+    position: relative;
+  }
+
+  .monolith {
+    width: 100%;
+    aspect-ratio: 2/5;
+    max-width: 220px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #1A0540 0%, var(--purple) 40%, #0D3B4A 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 80px rgba(75,31,168,0.4), 0 0 160px rgba(0,191,165,0.1);
+  }
+
+  .monolith::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(75,31,168,0.1) 3px,
+      rgba(75,31,168,0.1) 4px
+    );
+  }
+
+  .monolith-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  .monolith-icon {
+    width: 50px; height: 50px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .monolith-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    writing-mode: horizontal-tb;
+  }
+
+  .monolith-glow {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 80px;
+    background: radial-gradient(ellipse, rgba(0,191,165,0.4), transparent 70%);
+    filter: blur(20px);
+  }
+
+  /* ─── ASTRONAUT SECTION ─── */
+  .astronaut-section {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .astronaut-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .astronaut-portrait {
+    position: relative;
+  }
+
+  .portrait-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: linear-gradient(145deg, var(--deep-purple), var(--void));
+    border: 1px solid rgba(75,31,168,0.4);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .portrait-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 30%, rgba(75,31,168,0.4), transparent 60%),
+      radial-gradient(ellipse at 50% 80%, rgba(0,191,165,0.2), transparent 50%);
+  }
+
+  .portrait-silhouette {
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* SVG astronaut silhouette */
+  .portrait-silhouette svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+  }
+
+  .portrait-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(5,3,16,0.8);
+    border: 1px solid var(--teal);
+    padding: 0.5rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .portrait-nameplate {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(5,3,16,0.95), transparent);
+  }
+
+  .portrait-name {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .portrait-name-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    direction: rtl;
+  }
+
+  .portrait-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .portrait-scan-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--teal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+
+  .astronaut-text h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .astronaut-text h2 em { font-style: italic; color: var(--teal); }
+
+  .astronaut-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.2rem;
+  }
+
+  .astronaut-quote {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    border: 1px solid rgba(75,31,168,0.3);
+    background: rgba(75,31,168,0.05);
+    position: relative;
+  }
+
+  .astronaut-quote::before {
+    content: '"';
+    position: absolute;
+    top: -1.5rem;
+    left: 1.5rem;
+    font-size: 5rem;
+    color: var(--purple);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  .astronaut-quote blockquote {
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .astronaut-quote cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--teal);
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  .astronaut-quote .arabic-quote {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    direction: rtl;
+    margin-top: 1rem;
+  }
+
+  /* ─── SCRIPT REWRITE ─── */
+  .script-section {
+    padding: 8rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .script-header {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+
+  .script-header h2 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .script-header h2 em { font-style: italic; color: var(--teal); }
+
+  .script-header p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+  }
+
+  .script-acts {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .script-act {
+    position: relative;
+    padding-left: 3rem;
+    border-left: 1px solid rgba(75,31,168,0.3);
+  }
+
+  .script-act-number {
+    position: absolute;
+    left: -0.8rem;
+    top: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--void);
+    border: 1px solid rgba(75,31,168,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--purple);
+  }
+
+  .script-act-scene {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .script-act-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .script-act-title em { font-style: italic; color: var(--teal); }
+
+  .script-act-original {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .script-act-original::before {
+    content: 'ORIGINAL — 2001: A Space Odyssey';
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.15);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .script-act-rewrite {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .script-act-rewrite strong { color: white; font-weight: 600; }
+  .script-act-rewrite em { color: var(--teal); font-style: italic; }
+
+  .script-act-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    direction: rtl;
+    line-height: 2;
+    text-align: right;
+    padding: 1rem 1.5rem;
+    border-right: 2px solid rgba(75,31,168,0.4);
+    margin-top: 1rem;
+  }
+
+  .tov-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(0,191,165,0.4);
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ─── CAMPAIGN EXECUTIONS ─── */
+  .executions-section {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .executions-header {
+    margin-bottom: 5rem;
+  }
+
+  .executions-header h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .executions-header h2 em { font-style: italic; color: var(--teal); }
+
+  .executions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .execution-card {
+    border: 1px solid rgba(75,31,168,0.3);
+    background: rgba(75,31,168,0.04);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .execution-card:hover { border-color: rgba(0,191,165,0.5); }
+
+  .execution-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-visual {
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .execution-card.featured .card-visual {
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+
+  .card-bg-ooh {
+    background: 
+      linear-gradient(135deg, var(--deep-purple) 0%, #0a0520 50%, #001F1A 100%);
+  }
+
+  .card-bg-app {
+    background: linear-gradient(160deg, #060218, #0a0540);
+  }
+
+  .card-bg-social {
+    background: linear-gradient(145deg, #050310, #1a0540);
+  }
+
+  .card-bg-web {
+    background: linear-gradient(150deg, #030212, var(--deep-purple));
+  }
+
+  .card-content {
+    padding: 2rem;
+  }
+
+  .execution-card.featured .card-content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-channel {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .card-title em { font-style: italic; color: var(--teal); }
+
+  .card-copy {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  .card-copy .ar {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    direction: rtl;
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    line-height: 2;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* OOH Billboard mockup */
+  .ooh-billboard {
+    width: 90%;
+    aspect-ratio: 3/1;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(135deg, var(--deep-purple), var(--void));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .billboard-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(0,191,165,0.15), transparent 60%),
+                radial-gradient(ellipse at 20% 50%, rgba(75,31,168,0.3), transparent 60%);
+  }
+
+  .billboard-left {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  .billboard-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.4em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .billboard-headline {
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .billboard-headline em { font-style: italic; color: var(--teal); }
+
+  .billboard-sub {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .billboard-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .billboard-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: white;
+  }
+
+  .billboard-qr {
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding: 2px;
+  }
+
+  .qr-cell {
+    background: rgba(255,255,255,0.5);
+    border-radius: 1px;
+  }
+
+  /* Phone mockup */
+  .phone-mockup {
+    width: 120px;
+    background: #0A0520;
+    border-radius: 16px;
+    border: 1px solid rgba(75,31,168,0.5);
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(75,31,168,0.2);
+  }
+
+  .phone-screen {
+    padding: 0.8rem 0.6rem;
+  }
+
+  .phone-notification {
+    background: rgba(75,31,168,0.15);
+    border: 1px solid rgba(75,31,168,0.4);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .notif-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .notif-icon {
+    width: 14px; height: 14px;
+    background: var(--purple);
+    border-radius: 3px;
+    font-size: 0.4rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .notif-app {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.35rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .notif-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.3rem;
+    color: rgba(255,255,255,0.2);
+    margin-left: auto;
+  }
+
+  .notif-title {
+    font-size: 0.45rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .notif-body {
+    font-size: 0.38rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  .notif-teal { border-left: 2px solid var(--teal); }
+
+  /* Social post mockup */
+  .social-post {
+    width: 100%;
+    background: rgba(75,31,168,0.05);
+    border: 1px solid rgba(75,31,168,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .post-avatar {
+    width: 24px; height: 24px;
+    background: var(--purple);
+    border-radius: 50%;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.4rem;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+  }
+
+  .post-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.45rem;
+    font-weight: 700;
+  }
+
+  .post-handle {
+    font-size: 0.35rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .post-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(145deg, var(--deep-purple), var(--void));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .post-image-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(75,31,168,0.5), transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(0,191,165,0.2), transparent 50%);
+  }
+
+  .post-headline {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .post-headline em { font-style: italic; color: var(--teal); }
+
+  .post-caption {
+    padding: 0.8rem;
+    font-size: 0.45rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .post-tags {
+    color: var(--teal);
+  }
+
+  /* ─── PRODUCTS SECTION ─── */
+  .products-section {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .products-header {
+    margin-bottom: 5rem;
+  }
+
+  .products-header h2 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .products-header h2 em { font-style: italic; color: var(--teal); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    border: 1px solid rgba(75,31,168,0.3);
+    padding: 2rem;
+    background: rgba(75,31,168,0.03);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .product-card:hover {
+    border-color: rgba(0,191,165,0.4);
+    background: rgba(75,31,168,0.06);
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--purple), var(--teal));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover::before { transform: scaleX(1); }
+
+  .product-scene {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-name {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+
+  .product-name-ar {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    direction: rtl;
+    margin-bottom: 1.25rem;
+  }
+
+  .product-headline {
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding-bottom: 1rem;
+  }
+
+  .product-copy {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+
+  .product-tov {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+
+  .tov-pill {
+    padding: 0.2rem 0.6rem;
+    background: rgba(75,31,168,0.2);
+    border: 1px solid rgba(75,31,168,0.4);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.45rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .tov-pill.teal {
+    background: rgba(0,191,165,0.1);
+    border-color: rgba(0,191,165,0.4);
+    color: var(--teal);
+  }
+
+  /* ─── MANIFESTO ─── */
+  .manifesto-section {
+    padding: 10rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .manifesto-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .manifesto-text {
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  .manifesto-text em { font-style: italic; color: var(--teal); }
+
+  .manifesto-text .break {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .manifesto-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    direction: rtl;
+    margin-top: 3rem;
+    line-height: 2;
+  }
+
+  .manifesto-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--teal), transparent);
+    margin: 3rem auto;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid rgba(75,31,168,0.3);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-wordmark {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .footer-credit {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ─── UTILITY ─── */
+  .teal { color: var(--teal); }
+  .gold { color: var(--gold); }
+  .dim { color: rgba(255,255,255,0.4); }
+
+  /* OOH scene large */
+  .scene-ooh-large {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .scene-ooh-large .bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(0,191,165,0.12), transparent 55%),
+                radial-gradient(ellipse at 30% 70%, rgba(75,31,168,0.3), transparent 50%);
+  }
+
+  .scene-ooh-large .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .scene-ooh-large .orbit-graphic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(75,31,168,0.4);
+    margin: 0 auto 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scene-ooh-large .orbit-graphic::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,191,165,0.3);
+  }
+
+  .orbit-center-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--purple), var(--teal-dim));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 30px rgba(75,31,168,0.5);
+  }
+
+  .orbit-dot-sm {
+    position: absolute;
+    width: 8px; height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--teal);
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .scene-headline-lg {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .scene-headline-lg em { font-style: italic; color: var(--teal); }
+
+  .scene-sub-lg {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  /* ─── CARD STUDIO ─────────────────────────────────────────────────────── */
+  .card-studio-section {
+    padding: 0 4rem 8rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card-studio-header {
+    margin-bottom: 4rem;
+    max-width: 600px;
+  }
+
+  .card-studio-header h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .card-studio-header h2 em { font-style: italic; color: var(--teal); }
+
+  .card-studio-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  .card-studio-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Preview */
+  .card-preview-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .card-preview-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .card-3d-wrap {
+    perspective: 1000px;
+    cursor: crosshair;
+  }
+
+  .card-face {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 8/5;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.1s ease;
+    transform-style: preserve-3d;
+  }
+
+  .card-face canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .card-ui-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 6% 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-chip {
+    width: 42px;
+    height: 32px;
+    background: linear-gradient(135deg, #d4a843, #f5d485, #b8892a);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
+  }
+
+  .chip-inner {
+    width: 28px;
+    height: 22px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    background: linear-gradient(135deg, #c49a2a, #e8c060);
+  }
+
+  .card-logo-area {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .card-stc {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.8rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .card-bank {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.55rem, 1.5vw, 0.85rem);
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .card-number {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+
+  .card-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .card-holder-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.38rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 3px;
+  }
+
+  .card-holder-name {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem);
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .card-network svg {
+    display: block;
+  }
+
+  .card-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.12) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255,255,255,0.06) 100%
+    );
+    pointer-events: none;
+    border-radius: 16px;
+    transition: opacity 0.3s;
+  }
+
+  /* Name input */
+  .card-name-input-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-name-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(75,31,168,0.4);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    padding: 0.65rem 1.2rem;
+    width: 100%;
+    outline: none;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+  }
+
+  .card-name-input:focus {
+    border-color: var(--teal);
+  }
+
+  .card-name-input::placeholder {
+    color: rgba(255,255,255,0.2);
+    text-transform: none;
+  }
+
+  /* Action buttons */
+  .card-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .card-action-btn {
+    flex: 1;
+    padding: 0.65rem 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(75,31,168,0.5);
+    color: rgba(255,255,255,0.5);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .card-action-btn:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: white;
+  }
+
+  .card-action-btn.primary {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .card-action-btn.primary:hover {
+    background: var(--teal);
+    color: var(--void);
+  }
+
+  /* Controls */
+  .card-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Tabs */
+  .studio-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(75,31,168,0.3);
+  }
+
+  .studio-tab {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+  }
+
+  .studio-tab.active {
+    color: var(--teal);
+    border-bottom-color: var(--teal);
+  }
+
+  .studio-tab:hover:not(.active) {
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* Panels */
+  .studio-panel {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .studio-panel.active {
+    display: flex;
+  }
+
+  .panel-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.25rem;
+  }
+
+  .panel-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  /* Color grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+  }
+
+  .color-swatch {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.15s;
+    position: relative;
+  }
+
+  .color-swatch:hover, .color-swatch.active {
+    border-color: white;
+    transform: scale(1.2);
+  }
+
+  .custom-color-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .custom-color-input {
+    width: 44px;
+    height: 28px;
+    border: 1px solid rgba(75,31,168,0.5);
+    background: transparent;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+  }
+
+  /* Gradient grid */
+  .gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .gradient-swatch {
+    aspect-ratio: 8/5;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-swatch:hover, .gradient-swatch.active {
+    border-color: var(--teal);
+    transform: scale(1.04);
+  }
+
+  .gradient-swatch .grad-name {
+    position: absolute;
+    bottom: 4px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.38rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.15em;
+  }
+
+  /* Pattern grid */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .pattern-swatch {
+    aspect-ratio: 1;
+    border: 1px solid rgba(75,31,168,0.4);
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: rgba(75,31,168,0.08);
+    transition: all 0.2s;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pattern-swatch:hover, .pattern-swatch.active {
+    border-color: var(--teal);
+    background: rgba(0,191,165,0.08);
+  }
+
+  .pattern-swatch .pat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.32rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  .pattern-opacity-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Range slider */
+  .studio-range {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: rgba(75,31,168,0.4);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .studio-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    cursor: pointer;
+  }
+
+  .range-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--teal);
+    min-width: 2.5rem;
+    text-align: right;
+  }
+
+  /* Draw colors */
+  .draw-colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .draw-color {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.15s;
+  }
+
+  .draw-color:hover, .draw-color.active {
+    border-color: white;
+    transform: scale(1.2);
+  }
+
+  .draw-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .draw-control-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .draw-tools {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .draw-tool {
+    padding: 0.45rem 0.75rem;
+    background: rgba(75,31,168,0.15);
+    border: 1px solid rgba(75,31,168,0.4);
+    color: rgba(255,255,255,0.5);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+
+  .draw-tool.active, .draw-tool:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(0,191,165,0.08);
+  }
+
+  /* Material chips */
+  .material-section {
+    border-top: 1px solid rgba(75,31,168,0.3);
+    padding-top: 1.5rem;
+  }
+
+  .material-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .material-chip {
+    padding: 0.5rem 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(75,31,168,0.4);
+    color: rgba(255,255,255,0.4);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .material-chip.active, .material-chip:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(0,191,165,0.06);
+  }
+
+  @media (max-width: 900px) {
+    .card-studio-layout { grid-template-columns: 1fr; }
+    .color-grid { grid-template-columns: repeat(8, 1fr); }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- STAR FIELD -->
+<div class="starfield" id="starfield"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">STC</div>
+    <span class="nav-wordmark">Bank</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#campaign">Campaign</a></li>
+    <li><a href="#astronaut">Rayyanah</a></li>
+    <li><a href="#script">Script</a></li>
+    <li><a href="#channels">Channels</a></li>
+    <li><a href="#card-studio">Card Studio</a></li>
+    <li><a href="#products">Products</a></li>
+  </ul>
+</nav>
+
+<!-- ████████ HERO ████████ -->
+<section class="hero">
+  <div class="hero-orbit-ring"><div class="hero-orbit-dot"></div></div>
+  <div class="hero-orbit-ring"></div>
+  <div class="hero-orbit-ring"></div>
+
+  <div class="hero-center">
+    <p class="hero-eyebrow">STC Bank × INVENU — Campaign Concept</p>
+    <h1 class="hero-title">2026:<br><em>A Financial<br>Odyssey</em></h1>
+    <span class="hero-year">— رحلة مالية —</span>
+    <p class="hero-arabic">المملكة العربية السعودية · النظام التشغيلي لمستقبلك المالي</p>
+    <p class="hero-subtitle">Every civilization has its monolith — the object that rewires everything that comes after. STC Bank is Saudi Arabia's.</p>
+    <a href="#campaign" class="hero-cta">Enter the Odyssey →</a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ████████ OPENING CRAWL ████████ -->
+<section class="crawl-section" id="campaign">
+  <div class="crawl-inner">
+    <div class="crawl-card">
+      <p class="crawl-title">Title Card — Campaign Brief</p>
+      <p class="crawl-text">
+        In Kubrick's masterpiece, early man discovered a <strong>monolith</strong> — a single object that <em>reorganized all intelligence, all behavior, all possibility.</em>
+      </p>
+      <p class="crawl-text">
+        For a decade, STC was Saudi Arabia's everyday tap. Fast. Useful. Present. But <strong>STC Bank</strong> is not a faster tap. It is the monolith.
+      </p>
+      <p class="crawl-text">
+        Not Back to the Future — <em>no one is going back.</em> This is 2001: The financial architecture Saudi Arabia was always moving toward. Lucid. Anticipatory. Sovereign. Seamless. <strong>Grounded.</strong>
+      </p>
+      <p class="crawl-text">
+        The campaign introduces a single human anchor: <em>Rayyanah Barnawi</em> — the first Saudi woman in space, the first Arab woman to orbit Earth, and the 600th person in the history of humanity to leave it. A scientist, not a pilot. A threshold-crosser, not a passenger. She is the bridge between Saudi human trust and digital infinite.
+      </p>
+      <p class="crawl-arabic">
+        المستقبل لم يأتِ إلينا — نحن بنيناه.<br>
+        بنك STC. البنك الذي يفكّر قبل أن تحتاج.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ████████ ACT I ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part I — The Monolith</span>
+  <div class="act-line"></div>
+</div>
+
+<div class="act-one">
+  <div class="act-hero-grid">
+    <div class="act-text">
+      <p class="section-label">From Wallet to Operating System</p>
+      <h2>The age of<br><em>survival banking</em><br>is over.</h2>
+      <p>In the original film, man-apes grub for berries on a parched savanna — starving in the middle of plenty, unable to imagine a different way. <br><br>STC Bank sees that moment in the Saudi market today: a landscape full of financial potential, but consumers trapped in transactional logic. Transfer. Pay. Check balance. Repeat. An existence, not a life.</p>
+      <div class="pull-quote">
+        "They were slowly starving to death in the midst of plenty." — Kubrick, 2001<br>
+        <br>
+        <em>Not anymore.</em>
+      </div>
+      <p>STC Bank does not add features. It reorganizes the entire relationship between a Saudi and their financial life. It is the cube that arrives in the night — and nothing is the same when morning comes.</p>
+    </div>
+    <div class="act-visual">
+      <div class="monolith">
+        <div class="monolith-content">
+          <div class="monolith-icon">🏦</div>
+          <div class="monolith-text">STC Bank<br>2026<br>SAMA Licensed<br>Shariah Compliant</div>
+          <div class="monolith-icon" style="opacity:0.4">◆</div>
+          <div class="monolith-text">Born Here<br>Built Here<br>Thinks Here</div>
+        </div>
+        <div class="monolith-glow"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ████████ ASTRONAUT SECTION ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part II — The Human Signal</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="astronaut-section" id="astronaut">
+  <div class="astronaut-grid">
+    <div class="astronaut-portrait">
+      <div class="portrait-frame">
+        <div class="portrait-bg"></div>
+        <div class="portrait-silhouette">
+          <!-- Stylized astronaut SVG -->
+          <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Helmet -->
+            <ellipse cx="100" cy="80" rx="52" ry="55" fill="rgba(75,31,168,0.3)" stroke="rgba(75,31,168,0.7)" stroke-width="1"/>
+            <!-- Visor -->
+            <ellipse cx="100" cy="78" rx="36" ry="32" fill="rgba(0,191,165,0.08)" stroke="rgba(0,191,165,0.4)" stroke-width="1"/>
+            <!-- Visor tint -->
+            <ellipse cx="100" cy="78" rx="30" ry="27" fill="rgba(0,191,165,0.05)"/>
+            <!-- Face silhouette -->
+            <ellipse cx="100" cy="80" rx="22" ry="24" fill="rgba(75,31,168,0.2)"/>
+            <!-- Suit body -->
+            <path d="M 48 145 Q 40 200 42 255 L 158 255 Q 160 200 152 145 Q 135 130 100 128 Q 65 130 48 145Z" fill="rgba(75,31,168,0.25)" stroke="rgba(75,31,168,0.5)" stroke-width="1"/>
+            <!-- Suit collar -->
+            <rect x="70" y="128" width="60" height="20" rx="4" fill="rgba(75,31,168,0.4)" stroke="rgba(75,31,168,0.7)" stroke-width="1"/>
+            <!-- Chest panel -->
+            <rect x="80" y="165" width="40" height="30" rx="3" fill="rgba(0,191,165,0.08)" stroke="rgba(0,191,165,0.3)" stroke-width="1"/>
+            <!-- Panel lights -->
+            <circle cx="90" cy="175" r="3" fill="var(--teal)" opacity="0.8"/>
+            <circle cx="100" cy="175" r="3" fill="rgba(201,168,76,0.8)"/>
+            <circle cx="110" cy="175" r="3" fill="rgba(75,31,168,0.8)"/>
+            <!-- Shoulders -->
+            <ellipse cx="52" cy="150" rx="18" ry="14" fill="rgba(75,31,168,0.3)" stroke="rgba(75,31,168,0.5)" stroke-width="1"/>
+            <ellipse cx="148" cy="150" rx="18" ry="14" fill="rgba(75,31,168,0.3)" stroke="rgba(75,31,168,0.5)" stroke-width="1"/>
+            <!-- Arms -->
+            <path d="M 34 150 Q 28 185 34 220 L 52 218 Q 48 185 52 155Z" fill="rgba(75,31,168,0.2)" stroke="rgba(75,31,168,0.4)" stroke-width="1"/>
+            <path d="M 166 150 Q 172 185 166 220 L 148 218 Q 152 185 148 155Z" fill="rgba(75,31,168,0.2)" stroke="rgba(75,31,168,0.4)" stroke-width="1"/>
+            <!-- Teal highlight on helmet edge -->
+            <path d="M 58 60 Q 100 20 142 60" stroke="rgba(0,191,165,0.4)" stroke-width="1.5" fill="none"/>
+            <!-- Subtle stars reflected in visor -->
+            <circle cx="88" cy="70" r="1" fill="white" opacity="0.6"/>
+            <circle cx="112" cy="68" r="1" fill="white" opacity="0.5"/>
+            <circle cx="100" cy="62" r="1.5" fill="white" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="portrait-scan-line"></div>
+        <div class="portrait-badge">Saudi Space Commission · ISS Mission AX-2 · Axiom Space</div>
+        <div class="portrait-nameplate">
+          <div class="portrait-name">Rayyanah Barnawi</div>
+          <div class="portrait-name-arabic">ريانة برناوي</div>
+          <div class="portrait-title">First Arab Woman in Space · Biomedical Scientist · Campaign Anchor</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="astronaut-text">
+      <p class="section-label">The Human Signal</p>
+      <h2>She became the 600th person<br>to orbit Earth.<br><em>From Saudi Arabia.</em></h2>
+      <p>When Kubrick's astronaut Bowman crosses the threshold of the monolith, he sees everything — past, present, and a future that language cannot hold. The scene doesn't explain. It shows.</p>
+      <p>Rayyanah Barnawi is Saudi Arabia's Bowman. A breast cancer researcher who entered a domain with no template for someone like her — and became the first Arab woman to reach the International Space Station. Not a passenger. A scientist on a mission.
+
+      <div class="astronaut-quote">
+        <blockquote>"Being the first Saudi woman astronaut, representing the region — it's a great pleasure and honour that I'm very happy to carry."<br><br>"أن أكون أول رائدة فضاء سعودية، أن أمثّل المنطقة — هذا شرف عظيم أحمله بكل سعادة وفخر."</blockquote>
+        <cite>Rayyanah Barnawi — First Arab Woman in Space, AX-2 Mission, 2023</cite>
+        <div class="arabic-quote">الثقة الإنسانية + الذكاء الرقمي — هذا ما يجمعنا</div>
+      </div>
+
+      <p>She doesn't represent nostalgia. She represents <em>verified arrival</em> — the moment a civilization proves to itself that it has crossed a threshold. STC Bank is that same threshold. Built here. Thinking here. Flying you further.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ████████ SCRIPT REWRITE ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part III — The Rewritten Script</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="script-section" id="script">
+  <div class="script-header">
+    <p class="section-label">The Adaptation</p>
+    <h2>Kubrick wrote<br><em>the template.</em><br>We write the bank.</h2>
+    <p>Six scenes from 2001: A Space Odyssey, rewritten as STC Bank's founding story. Each carries a TOV pillar. Each serves a product truth.</p>
+  </div>
+
+  <div class="script-acts">
+
+    <!-- ACT 1 -->
+    <div class="script-act">
+      <div class="script-act-number">I</div>
+      <p class="script-act-scene">Scene — The Dawn of Man → The Dawn of Banking</p>
+      <h3 class="script-act-title">From the era of <em>the tap</em><br>to the age of the system.</h3>
+
+      <div class="script-act-original">
+        The man-apes were slowly starving to death in the midst of plenty. About them, competing with them for the same fodder, was a potential source of more food than they could ever hope to eat. Yet the idea of eating it was beyond their imagination.
+      </div>
+
+      <div class="tov-tag">● Lucid</div>
+      <div class="tov-tag">● Grounded</div>
+
+      <p class="script-act-rewrite">
+        For years, Saudi Arabia had money moving everywhere — but financial intelligence belonged to no one. You paid. You transferred. You checked a number. You repeated. <strong>The relationship between a Saudi and their money was transactional, not sovereign.</strong><br><br>
+        Then STC Bank arrived.<br><br>
+        Not as a feature. Not as a tab inside a wallet. <em>As a complete financial operating system.</em> SAMA-licensed. Shariah-compliant. Built by the country that invented the principle of trust-before-transaction.
+      </p>
+      <p class="script-act-arabic">
+        المال كان في كل مكان — لكن الذكاء المالي لم يكن لأحد.<br>
+        حتى جاء بنك STC. ليس تطبيقاً. بل نظام تشغيلي.
+      </p>
+    </div>
+
+    <!-- ACT 2 -->
+    <div class="script-act">
+      <div class="script-act-number">II</div>
+      <p class="script-act-scene">Scene — The Monolith → The App That Changes Everything</p>
+      <h3 class="script-act-title">A <em>cube</em> appeared.<br>And nothing was the same.</h3>
+
+      <div class="script-act-original">
+        It is a cube about fifteen feet on a side, made of some completely transparent material. Moonwatcher puts out his hand and feels a warm, hard surface. After several minutes of intense thought, he arrives at a brilliant explanation. It is a rock, of course, and it must have grown during the night.
+      </div>
+
+      <div class="tov-tag">● Anticipatory</div>
+      <div class="tov-tag">● Seamless</div>
+
+      <p class="script-act-rewrite">
+        They said the first time they opened STC Bank, <strong>it felt like the app had always known them.</strong><br><br>
+        Balance organized. Insights surfaced. A remittance pre-estimated. A savings goal already running. <em>A notification that arrived not after the moment — but exactly at it.</em><br><br>
+        This is not prediction. This is design. A system that thinks before you need to. That structures your financial life the way a trusted partner would — with full knowledge, zero noise, and the dignity of someone who respects your time.
+      </p>
+      <p class="script-act-arabic">
+        لم يشعروا بأنهم يستخدمون تطبيقاً.<br>
+        شعروا أن التطبيق كان ينتظرهم.
+      </p>
+    </div>
+
+    <!-- ACT 3 -->
+    <div class="script-act">
+      <div class="script-act-number">III</div>
+      <p class="script-act-scene">Scene — First Lesson → The Financial Operating System</p>
+      <h3 class="script-act-title">Inside the monolith:<br><em>six products. one truth.</em></h3>
+
+      <div class="script-act-original">
+        Spinning wheels of light begin to merge. The hominids watch, wide-eyed, mesmerized captives of the Crystal Cube. Inside that block is a group eating chunks of meat — gorged and replete, with sleek and glossy pelts. A condition of life that Moonwatcher had never imagined.
+      </div>
+
+      <div class="tov-tag">● Sovereign</div>
+      <div class="tov-tag">● Seamless</div>
+      <div class="tov-tag">● Anticipatory</div>
+
+      <p class="script-act-rewrite">
+        <strong>Credit Cards.</strong> Positioned not as debt — as command. <em>"Your spending, engineered to work for you."</em><br><br>
+        <strong>Personal Finance.</strong> Not a loan. An advance from yourself. <em>"Your future salary. Present now."</em><br><br>
+        <strong>Remittance.</strong> Not a transfer. A connection. <em>"Send money. Send home."</em><br><br>
+        <strong>Marketplace.</strong> Not commerce. <em>Curated financial access.</em><br><br>
+        <strong>eSIM.</strong> Connectivity as infrastructure — <em>same network, any sky.</em><br><br>
+        <strong>Savings.</strong> Not a product. A posture. <em>"Tomorrow, organized. Today."</em><br><br>
+        Six products. One operating system. One voice: <strong>clear, sovereign, always ahead of you.</strong>
+      </p>
+      <p class="script-act-arabic">
+        ستة منتجات. نظام واحد.<br>
+        بنك STC — يعمل قبل أن تطلب.
+      </p>
+    </div>
+
+    <!-- ACT 4 -->
+    <div class="script-act">
+      <div class="script-act-number">IV</div>
+      <p class="script-act-scene">Scene — Discovery → Rayyanah Barnawi / Campaign Anchor</p>
+      <h3 class="script-act-title">She crossed the threshold.<br><em>So you don't have to wonder.</em></h3>
+
+      <div class="script-act-original">
+        Bowman looked out from the pod as the monolith drew him in. Space turned and twisted upon itself. In a moment of time too short to be measured, everything he knew about distance, about time, about what was possible — reorganized itself completely.
+      </div>
+
+      <div class="tov-tag">● Grounded</div>
+      <div class="tov-tag">● Sovereign</div>
+
+      <p class="script-act-rewrite">
+        ريانة برناوي didn't leave Saudi Arabia. <strong>She expanded it.</strong><br><br>
+        400km above Earth, she became the first Arab woman to reach the International Space Station — not as a passenger, but as a scientist running 14 research experiments. She understood something that can only be understood from a distance: <em>potential is not about geography. It is about architecture.</em><br><br>
+        She came back. And she opened STC Bank. Not because it's impressive. Because <strong>it's intelligent. Built for someone who has already decided where they're going.</strong>
+      </p>
+      <p class="script-act-arabic">
+        ريانة برناوي لم تغادر المملكة.<br>
+        بل وسّعت حدودها.
+      </p>
+    </div>
+
+    <!-- ACT 5 -->
+    <div class="script-act">
+      <div class="script-act-number">V</div>
+      <p class="script-act-scene">Scene — HAL's Clarity → STC Bank's Intelligence</p>
+      <h3 class="script-act-title">The bank that<br><em>tells you the truth.</em></h3>
+
+      <div class="script-act-original">
+        HAL: "I'm sorry, Dave, but I don't think I can answer that question without knowing everything that all of you know." / Bowman: "He's got a point."
+      </div>
+
+      <div class="tov-tag">● Lucid</div>
+      <div class="tov-tag">● Anticipatory</div>
+
+      <p class="script-act-rewrite">
+        Hal was programmed to lie about one subject. The result was a breakdown.<br><br>
+        <strong>STC Bank is programmed for one thing: clarity.</strong><br><br>
+        No fine print that contradicts the headline. No rates buried below the fold. No service message that reads like a legal disclaimer dressed in a greeting. <em>When things go wrong, we say so. When things change, you know first. When you need to decide, the information arrives structured — already in the shape you need it.</em><br><br>
+        Trust is not a feeling. It is an engineering choice. We make it with every message.
+      </p>
+      <p class="script-act-arabic">
+        الثقة ليست شعوراً.<br>
+        هي خيار هندسي — نصنعه في كل رسالة.
+      </p>
+    </div>
+
+    <!-- ACT 6 -->
+    <div class="script-act">
+      <div class="script-act-number">VI</div>
+      <p class="script-act-scene">Scene — The Star Child → The New Saudi</p>
+      <h3 class="script-act-title">The last frame:<br><em>born here. beyond.</em></h3>
+
+      <div class="script-act-original">
+        And now he was master of the world, and he was not sure what to do next... But he would think of something. / The Star Child floated above Earth, vast, luminous, capable of anything.
+      </div>
+
+      <div class="tov-tag">● Grounded</div>
+      <div class="tov-tag">● Sovereign</div>
+      <div class="tov-tag">● Seamless</div>
+
+      <p class="script-act-rewrite">
+        The original film ends with <em>possibility as an image</em>. Not a plan. Not a feature list. An image of something that has crossed a threshold and will never go back.<br><br>
+        STC Bank ends its campaign the same way.<br><br>
+        <strong>Rayyanah Barnawi. In Saudi dress. Phone in hand. STC Bank open.</strong> No voiceover. No feature call-out. Just the quiet understanding that the financial infrastructure of the new Saudi Arabia is already here — and she's already using it.<br><br>
+        <em>"The Financial Operating System of Saudi Arabia."</em><br>
+        النظام التشغيلي المالي للمملكة العربية السعودية.
+      </p>
+      <p class="script-act-arabic">
+        بُني هنا. فكّر هنا. يطير بك أبعد.<br>
+        بنك STC.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ████████ CHANNEL EXECUTIONS ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part IV — Channel Executions</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="executions-section" id="channels">
+  <div class="executions-header">
+    <p class="section-label">Applied Across Every Touchpoint</p>
+    <h2>The odyssey,<br><em>everywhere you are.</em></h2>
+  </div>
+
+  <div class="executions-grid">
+
+    <!-- FEATURED: OOH -->
+    <div class="execution-card featured">
+      <div class="card-visual card-bg-ooh">
+        <div class="scene-ooh-large">
+          <div class="bg"></div>
+          <div class="content">
+            <div class="orbit-graphic">
+              <div class="orbit-dot-sm"></div>
+              <div class="orbit-center-icon">🌍</div>
+            </div>
+            <div class="billboard-eyebrow">ريانة برناوي رأت المملكة من الفضاء · Rayyanah Barnawi saw it from orbit</div>
+            <div class="scene-headline-lg">We built what he saw<br>from up there: <em>down here.</em></div>
+            <div class="scene-sub-lg" style="margin-top:1rem;">STC BANK · النظام التشغيلي المالي للمملكة · SAMA Licensed · Shariah Compliant</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-channel">OOH — Riyadh · Jeddah · NEOM · Airport</p>
+        <h3 class="card-title">The <em>billboard</em> you<br>can't look away from.</h3>
+        <p class="card-copy">
+          The campaign's visual language borrows from mission control and deep space photography — not banking. Extreme negative space. Single human silhouette (Rayyanah Barnawi) against the curve of the Earth. STC Bank logo as the only color anchor.<br><br>
+          No tagline wars with other banks. No rate comparisons. Just the silence of someone who has already arrived at a conclusion — and is inviting you to catch up.
+          <span class="ar">لا منافسة بالأرقام. منافسة بالمعنى.<br>بنك STC — وصل قبلك.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- In-App -->
+    <div class="execution-card">
+      <div class="card-visual card-bg-app" style="padding: 1.5rem; gap: 1rem; flex-direction: column; justify-content: center;">
+        <div class="phone-mockup" style="margin: 0 auto;">
+          <div class="phone-screen">
+            <div class="phone-notification notif-teal">
+              <div class="notif-header">
+                <div class="notif-icon">🏦</div>
+                <span class="notif-app">STC Bank</span>
+                <span class="notif-time">Now</span>
+              </div>
+              <div class="notif-title">Before you ask — your salary just arrived early.</div>
+              <div class="notif-body">SAR 12,400 available. Your rent is due in 3 days. Pay now?</div>
+            </div>
+            <div class="phone-notification">
+              <div class="notif-header">
+                <div class="notif-icon">📈</div>
+                <span class="notif-app">STC Bank</span>
+                <span class="notif-time">2h ago</span>
+              </div>
+              <div class="notif-title">Your savings are ahead of target.</div>
+              <div class="notif-body">6 months in. Goal: SAR 50K. Current: SAR 31,200. On track.</div>
+            </div>
+            <div class="phone-notification" style="border-color: rgba(201,168,76,0.4);">
+              <div class="notif-header">
+                <div class="notif-icon" style="background: rgba(201,168,76,0.3);">🌐</div>
+                <span class="notif-app">STC Bank</span>
+                <span class="notif-time">Yesterday</span>
+              </div>
+              <div class="notif-title">Your transfer reached Manila.</div>
+              <div class="notif-body">PHP 12,800 delivered. No delay. No hidden fees.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-channel">In-App Notifications · Push · Banners</p>
+        <h3 class="card-title"><em>HAL 9000</em> got one thing right:<br>anticipate.</h3>
+        <p class="card-copy">Every notification arrives with purpose — never noise. The tone: lucid, pre-emptive, structured. No emojis disrupting authority. No "Dear Customer." Just precise, human-facing intelligence that makes the customer feel seen — before they even opened the app.
+          <span class="ar">لم نرسل إشعاراً — أرسلنا يقيناً.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div class="execution-card">
+      <div class="card-visual card-bg-social" style="padding: 1rem; justify-content: center;">
+        <div class="social-post">
+          <div class="post-header">
+            <div class="post-avatar">SB</div>
+            <div>
+              <div class="post-name">STC Bank</div>
+              <div class="post-handle">@stcbank_ksa · Verified</div>
+            </div>
+          </div>
+          <div class="post-image">
+            <div class="post-image-bg"></div>
+            <div class="post-headline">
+              In 1969, man<br>reached the moon.<br>In 2023, a Saudi woman<br>reached the ISS.<br><br><em>We built the bank<br>for what comes next.</em>
+            </div>
+          </div>
+          <div class="post-caption">
+            ريانة برناوي رأت الأرض من هناك — ونحن بنينا ما رأته من هنا.<br>
+            بنك STC. النظام التشغيلي المالي.<br><br>
+            <span class="post-tags">#بنك_STC #ريانة_برناوي #المملكة_الرقمية</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-channel">Digital Media — Instagram · X · LinkedIn</p>
+        <h3 class="card-title">Social that<br><em>doesn't act social.</em></h3>
+        <p class="card-copy">No emoji-heavy captions. No promotional countdown clocks. The feed is a broadcast from a civilization that has already moved forward — inviting followers to catch up, not to be sold to. Rayyanah Barnawi content appears as personal, not sponsored.
+          <span class="ar">لا ضجيج. فقط الحقيقة.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ████████ CARD STUDIO ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part V — Card Studio · Design Your Card</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="card-studio-section" id="card-studio">
+  <div class="card-studio-header">
+    <p class="section-label">Credit Cards · Interactive Feature · 2026</p>
+    <h2>Your card.<br><em>Your canvas.</em></h2>
+    <p class="card-studio-sub">STC Bank cards are the first in Saudi Arabia you can fully personalize — choose from hundreds of gradients, draw directly on your card, layer patterns, or build something completely your own.</p>
+  </div>
+
+  <div class="card-studio-layout">
+
+    <!-- LEFT: Live card preview -->
+    <div class="card-preview-area">
+      <div class="card-preview-label">Live Preview</div>
+      <div class="card-3d-wrap" id="card3dWrap">
+        <div class="card-face" id="cardFace">
+          <!-- Canvas for drawing -->
+          <canvas id="cardCanvas" width="560" height="350"></canvas>
+          <!-- Card UI overlaid -->
+          <div class="card-ui-overlay">
+            <div class="card-top-row">
+              <div class="card-chip">
+                <div class="chip-inner"></div>
+              </div>
+              <div class="card-logo-area">
+                <span class="card-stc">STC</span><span class="card-bank"> Bank</span>
+              </div>
+            </div>
+            <div class="card-number">•••• •••• •••• 2026</div>
+            <div class="card-bottom-row">
+              <div class="card-holder-info">
+                <div class="card-holder-label">CARD HOLDER</div>
+                <div class="card-holder-name" id="cardHolderName">YOUR NAME</div>
+              </div>
+              <div class="card-expiry-info">
+                <div class="card-holder-label">EXPIRES</div>
+                <div class="card-holder-name">12/29</div>
+              </div>
+              <div class="card-network">
+                <svg width="48" height="30" viewBox="0 0 48 30">
+                  <circle cx="18" cy="15" r="13" fill="rgba(255,60,0,0.75)"/>
+                  <circle cx="30" cy="15" r="13" fill="rgba(255,160,0,0.75)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="card-shine" id="cardShine"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Name input -->
+      <div class="card-name-input-wrap">
+        <input type="text" id="cardNameInput" class="card-name-input" placeholder="Enter your name on card" maxlength="22" />
+      </div>
+      <!-- Action buttons -->
+      <div class="card-actions">
+        <button class="card-action-btn" id="undoBtn" title="Undo">↩ Undo</button>
+        <button class="card-action-btn" id="clearDrawBtn" title="Clear Drawing">✕ Clear Draw</button>
+        <button class="card-action-btn primary" id="downloadCardBtn">↓ Save Card</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Controls -->
+    <div class="card-controls">
+
+      <!-- TAB SWITCHER -->
+      <div class="studio-tabs">
+        <button class="studio-tab active" data-tab="colors">Colors</button>
+        <button class="studio-tab" data-tab="gradients">Gradients</button>
+        <button class="studio-tab" data-tab="patterns">Patterns</button>
+        <button class="studio-tab" data-tab="draw">Draw</button>
+      </div>
+
+      <!-- COLORS TAB -->
+      <div class="studio-panel active" id="tab-colors">
+        <p class="panel-label">Solid Color Backgrounds</p>
+        <div class="color-grid" id="colorGrid"></div>
+        <div class="custom-color-row">
+          <label class="panel-label" style="margin:0">Custom color</label>
+          <input type="color" id="customColorPicker" class="custom-color-input" value="#4B1FA8" />
+        </div>
+      </div>
+
+      <!-- GRADIENTS TAB -->
+      <div class="studio-panel" id="tab-gradients">
+        <p class="panel-label">Gradient Themes</p>
+        <div class="gradient-grid" id="gradientGrid"></div>
+      </div>
+
+      <!-- PATTERNS TAB -->
+      <div class="studio-panel" id="tab-patterns">
+        <p class="panel-label">Overlay Patterns</p>
+        <div class="pattern-grid" id="patternGrid"></div>
+        <div class="pattern-opacity-row">
+          <label class="panel-label" style="margin:0">Pattern opacity</label>
+          <input type="range" id="patternOpacity" min="5" max="60" value="20" class="studio-range" />
+          <span id="patternOpacityVal" class="range-val">20%</span>
+        </div>
+      </div>
+
+      <!-- DRAW TAB -->
+      <div class="studio-panel" id="tab-draw">
+        <p class="panel-label">Draw on your card</p>
+        <div class="draw-colors" id="drawColors"></div>
+        <div class="draw-controls">
+          <div class="draw-control-row">
+            <label class="panel-label" style="margin:0">Brush size</label>
+            <input type="range" id="brushSize" min="2" max="40" value="8" class="studio-range" />
+            <span id="brushSizeVal" class="range-val">8px</span>
+          </div>
+          <div class="draw-control-row">
+            <label class="panel-label" style="margin:0">Opacity</label>
+            <input type="range" id="brushOpacity" min="10" max="100" value="90" class="studio-range" />
+            <span id="brushOpacityVal" class="range-val">90%</span>
+          </div>
+          <div class="draw-tools">
+            <button class="draw-tool active" id="toolPen" title="Pen">✏️ Pen</button>
+            <button class="draw-tool" id="toolMarker" title="Marker">🖊 Marker</button>
+            <button class="draw-tool" id="toolSpray" title="Spray">💨 Spray</button>
+            <button class="draw-tool" id="toolEraser" title="Eraser">⬜ Eraser</button>
+          </div>
+        </div>
+        <p class="panel-hint">Click + drag on the card preview to draw</p>
+      </div>
+
+      <!-- MATERIAL CHIPS -->
+      <div class="material-section">
+        <p class="panel-label">Card Material</p>
+        <div class="material-chips">
+          <button class="material-chip active" data-material="standard">Standard</button>
+          <button class="material-chip" data-material="matte">Matte</button>
+          <button class="material-chip" data-material="metal">Metal</button>
+          <button class="material-chip" data-material="glow">Glow</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ████████ PRODUCTS ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">Part VI — Product Odyssey</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="products-section" id="products">
+  <div class="products-header">
+    <p class="section-label">Six Products — Six Scenes</p>
+    <h2>Every product<br><em>its own chapter</em><br>of the odyssey.</h2>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Credit Cards -->
+    <div class="product-card">
+      <p class="product-scene">Scene I</p>
+      <h3 class="product-name">Credit Cards</h3>
+      <p class="product-name-ar">بطاقات الائتمان</p>
+      <p class="product-headline">"Your spending, engineered to work for you."</p>
+      <p class="product-copy">Not a limit — a command. The card as mission instrument. Cashback that arrives structured, not as a surprise. Rewards that compound like a well-designed system. The language: sovereign, never promotional. The visual: the card itself is monolith black.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Sovereign</span>
+        <span class="tov-pill">Lucid</span>
+      </div>
+    </div>
+
+    <!-- Personal Finance -->
+    <div class="product-card">
+      <p class="product-scene">Scene II</p>
+      <h3 class="product-name">Personal Finance</h3>
+      <p class="product-name-ar">التمويل الشخصي</p>
+      <p class="product-headline">"Your future salary. Present now."</p>
+      <p class="product-copy">Not a loan — an advance against the future you're already building. The campaign visual: a clock face replaced by a financial chart. Rayyanah Barnawi voiceover: "I planned for an eight-day mission. STC Bank helped me plan for an eight-year future." No rate-first messaging. Trust-first, structure-second.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Anticipatory</span>
+        <span class="tov-pill">Grounded</span>
+      </div>
+    </div>
+
+    <!-- Remittance -->
+    <div class="product-card">
+      <p class="product-scene">Scene III</p>
+      <h3 class="product-name">Remittance</h3>
+      <p class="product-name-ar">التحويلات المالية</p>
+      <p class="product-headline">"Send money. Send home."</p>
+      <p class="product-copy">Kubrick showed us that distance is an illusion of perspective. From space, Earth looks singular. From STC Bank, sending money home feels the same — instant, invisible, already done. The campaign shows the recipient's face. Not the sender's phone screen. Human trust, delivered digitally.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Seamless</span>
+        <span class="tov-pill">Grounded</span>
+      </div>
+    </div>
+
+    <!-- Marketplace -->
+    <div class="product-card">
+      <p class="product-scene">Scene IV</p>
+      <h3 class="product-name">Marketplace</h3>
+      <p class="product-name-ar">المتجر</p>
+      <p class="product-headline">"Everything your financial life needs. One orbit."</p>
+      <p class="product-copy">The space station in 2001 is a hub — multiple missions departing from one intelligent center. The Marketplace is STC Bank's station. Insurance, offers, financial tools, curated by intelligence. Language: structured and curatorial. Never bazaar-like. Never loud.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Lucid</span>
+        <span class="tov-pill">Anticipatory</span>
+      </div>
+    </div>
+
+    <!-- eSIM -->
+    <div class="product-card">
+      <p class="product-scene">Scene V</p>
+      <h3 class="product-name">eSIM</h3>
+      <p class="product-name-ar">الشريحة الرقمية</p>
+      <p class="product-headline">"Same network. Any sky."</p>
+      <p class="product-copy">Rayyanah Barnawi connected from the ISS. You connect from anywhere. The eSIM campaign uses the astronaut image at its most literal — but the product copy remains understated. No technical specs. Just the image of someone connected across the most extreme distance, and the quiet confidence that yours will work just as well.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Seamless</span>
+        <span class="tov-pill">Sovereign</span>
+      </div>
+    </div>
+
+    <!-- Savings -->
+    <div class="product-card">
+      <p class="product-scene">Scene VI</p>
+      <h3 class="product-name">Savings Account</h3>
+      <p class="product-name-ar">حساب الادخار</p>
+      <p class="product-headline">"Tomorrow, organized. Today."</p>
+      <p class="product-copy">HAL tracks the mission. STC Bank tracks your savings. The campaign visualizes savings goals as mission milestones — a progress bar that looks like a docking approach. The Arabic line: "اليوم تدّخر. غداً تملك." Today you save. Tomorrow you own. Aspirational without hype. Structured without coldness.</p>
+      <div class="product-tov">
+        <span class="tov-pill teal">Anticipatory</span>
+        <span class="tov-pill">Lucid</span>
+        <span class="tov-pill">Grounded</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ████████ MANIFESTO ████████ -->
+<div class="act-divider">
+  <div class="act-line"></div>
+  <span class="act-label">The Campaign Manifesto</span>
+  <div class="act-line"></div>
+</div>
+
+<section class="manifesto-section">
+  <p class="manifesto-eyebrow">2026: A Financial Odyssey — Manifesto</p>
+
+  <div class="manifesto-text">
+    <span class="break">Every civilization has its <em>monolith.</em></span>
+    <span class="break">The object that arrives in the night</span>
+    <span class="break">and reorganizes everything that comes after.</span>
+  </div>
+
+  <div class="manifesto-line"></div>
+
+  <div class="manifesto-text">
+    <span class="break">Saudi Arabia did not need</span>
+    <span class="break">a bank that moves faster.</span>
+    <span class="break">It needed a bank that <em>thinks deeper.</em></span>
+  </div>
+
+  <div class="manifesto-line"></div>
+
+  <div class="manifesto-text">
+    <span class="break">One that <em>anticipates</em> before you ask.</span>
+    <span class="break">One that <em>structures</em> before you worry.</span>
+    <span class="break">One that <em>secures</em> without announcing it.</span>
+  </div>
+
+  <div class="manifesto-line"></div>
+
+  <div class="manifesto-text">
+    <span class="break">We are not Back to the Future.</span>
+    <span class="break">There is no past to return to.</span>
+    <span class="break"><em>We are 2026. A Financial Odyssey.</em></span>
+    <span class="break">Born here. Built here. Thinking here.</span>
+  </div>
+
+  <div class="manifesto-line"></div>
+
+  <div class="manifesto-arabic">
+    كل حضارة لها مونوليثها — الشيء الذي يغيّر كل شيء بعده.<br>
+    بنك STC هو مونوليث المملكة المالي.<br>
+    لا نتحرك أسرع — نفكّر أعمق.<br><br>
+    <strong>النظام التشغيلي المالي للمملكة العربية السعودية.</strong>
+  </div>
+</section>
+
+<!-- ████████ FOOTER ████████ -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-wordmark">STC Bank × INVENU</div>
+    <div class="footer-credit">Campaign Concept · 2026: A Financial Odyssey · Confidential</div>
+  </div>
+  <div class="footer-right">
+    Tone: Lucid · Anticipatory · Sovereign · Seamless · Grounded<br>
+    Archetype: Sage / Outlaw<br>
+    Strategy: Human Trust + Digital Intelligence
+  </div>
+</footer>
+
+<script>
+  // Generate star field
+  const starfield = document.getElementById('starfield');
+  const starCount = 200;
+
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+      --d: ${Math.random() * 5 + 2}s;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: ${Math.random() * 0.7 + 0.1};
+    `;
+    starfield.appendChild(star);
+  }
+
+  // Parallax subtle effect on scroll
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    starfield.style.transform = `translateY(${scrolled * 0.3}px)`;
+  });
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.script-act, .product-card, .execution-card, .crawl-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(el);
+  });
+  // ─── CARD STUDIO ENGINE ────────────────────────────────────────────────────
+
+  (function() {
+    const canvas = document.getElementById('cardCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cardFace = document.getElementById('cardFace');
+    const card3dWrap = document.getElementById('card3dWrap');
+
+    // ── State ──────────────────────────────────────────────────────────────
+    let state = {
+      bgType: 'gradient',
+      bgValue: null,          // set below
+      patternKey: null,
+      patternOpacity: 0.20,
+      material: 'standard',
+      drawColor: '#00BFA5',
+      brushSize: 8,
+      brushOpacity: 0.90,
+      tool: 'pen',
+      isDrawing: false,
+      lastX: 0,
+      lastY: 0,
+      history: [],
+      maxHistory: 30,
+    };
+
+    // ── Color palette ──────────────────────────────────────────────────────
+    const COLORS = [
+      '#050310','#0D0630','#1A0540','#2A0560','#3D0880','#5B0DBE','#7B2FE8',
+      '#9B5FFF','#BFA0FF','#E8D8FF',
+      '#001A14','#003D28','#006644','#009966','#00BFA5','#00E8CC','#66FFF0',
+      '#003366','#0055AA','#0088DD','#22AAFF','#66CCFF',
+      '#330000','#660010','#990022','#CC0033','#FF1A4D','#FF6688',
+      '#331A00','#663300','#994400','#CC6600','#FF8800','#FFAA44',
+      '#333300','#666600','#998800','#CCBB00','#FFEE00','#FFF566',
+      '#C9A84C','#DFB96A','#E8C882','#F0D9A8','#F7EDD0','#FFFAF0',
+      '#1A1A1A','#333333','#555555','#888888','#BBBBBB','#DDDDDD','#FFFFFF',
+      '#0D1033','#1B2266','#2A33AA','#3344CC','#6677FF','#99AAFF',
+    ];
+
+    // ── Gradients ──────────────────────────────────────────────────────────
+    const GRADIENTS = [
+      { name:'Void Purple', stops:['#050310','#1A0540','#3D0880'] },
+      { name:'Deep Teal',   stops:['#001A14','#004D3A','#00BFA5'] },
+      { name:'Odyssey',     stops:['#0D0630','#4B1FA8','#00BFA5'] },
+      { name:'Midnight',    stops:['#0A0A1A','#1A1040','#0D3B4A'] },
+      { name:'Gold Rush',   stops:['#1A1000','#4A2C00','#C9A84C'] },
+      { name:'Solar',       stops:['#1A0010','#660033','#FF3366'] },
+      { name:'Aurora',      stops:['#003322','#005544','#00BFA5','#6644CC'] },
+      { name:'Deep Space',  stops:['#00001A','#001155','#0033AA'] },
+      { name:'Rose Gold',   stops:['#1A0A0A','#6B2040','#E89090'] },
+      { name:'Forest',      stops:['#021A08','#0A4A15','#1A8830'] },
+      { name:'Lava',        stops:['#1A0500','#660C00','#CC3300','#FF6600'] },
+      { name:'Ice',         stops:['#0A1A2A','#1A4466','#88CCEE'] },
+      { name:'Toxic',       stops:['#001A00','#0A4A0A','#44CC00'] },
+      { name:'Nebula',      stops:['#0A0020','#3B0055','#7700AA','#FF44CC'] },
+      { name:'Sand Storm',  stops:['#1A1200','#4A3600','#997700','#DDC866'] },
+      { name:'INVENU',      stops:['#050310','#5B0DBE','#00BFA5'] },
+      { name:'STC Night',   stops:['#0A0020','#2A0070','#5B0DBE'] },
+      { name:'Future',      stops:['#000A1A','#001A40','#003399','#0077FF'] },
+    ];
+
+    // ── Patterns ──────────────────────────────────────────────────────────
+    const PATTERNS = [
+      { key:'stars',   label:'Stars',   icon:'✦' },
+      { key:'dots',    label:'Dots',    icon:'·' },
+      { key:'lines',   label:'Lines',   icon:'≡' },
+      { key:'grid',    label:'Grid',    icon:'⊞' },
+      { key:'waves',   label:'Waves',   icon:'〜' },
+      { key:'hex',     label:'Hexagon', icon:'⬡' },
+      { key:'circuit', label:'Circuit', icon:'⟐' },
+      { key:'cross',   label:'Cross',   icon:'✕' },
+    ];
+
+    // ── Draw colors ────────────────────────────────────────────────────────
+    const DRAW_COLORS = [
+      '#FFFFFF','#00BFA5','#C9A84C','#FF3366','#FF8800','#FFEE00',
+      '#66CCFF','#9B5FFF','#FF44CC','#44CC00','#FF6688','#AAFFEE',
+      '#050310','#1A0540','#003333','#330000',
+    ];
+
+    // ── Build UI ───────────────────────────────────────────────────────────
+
+    // Color swatches
+    const colorGrid = document.getElementById('colorGrid');
+    COLORS.forEach(c => {
+      const sw = document.createElement('div');
+      sw.className = 'color-swatch';
+      sw.style.background = c;
+      sw.title = c;
+      sw.addEventListener('click', () => {
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        state.bgType = 'solid';
+        state.bgValue = c;
+        renderCard();
+      });
+      colorGrid.appendChild(sw);
+    });
+
+    document.getElementById('customColorPicker').addEventListener('input', function() {
+      state.bgType = 'solid';
+      state.bgValue = this.value;
+      renderCard();
+    });
+
+    // Gradient swatches
+    const gradientGrid = document.getElementById('gradientGrid');
+    GRADIENTS.forEach((g, i) => {
+      const sw = document.createElement('div');
+      sw.className = 'gradient-swatch' + (i === 15 ? ' active' : '');
+      sw.style.background = `linear-gradient(135deg, ${g.stops.join(', ')})`;
+      sw.innerHTML = `<span class="grad-name">${g.name}</span>`;
+      sw.addEventListener('click', () => {
+        document.querySelectorAll('.gradient-swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        state.bgType = 'gradient';
+        state.bgValue = g.stops;
+        renderCard();
+      });
+      gradientGrid.appendChild(sw);
+    });
+
+    // Pattern swatches
+    const patternGrid = document.getElementById('patternGrid');
+    PATTERNS.forEach(p => {
+      const sw = document.createElement('div');
+      sw.className = 'pattern-swatch';
+      sw.innerHTML = `<span style="font-size:1.6rem">${p.icon}</span><span class="pat-label">${p.label}</span>`;
+      sw.addEventListener('click', () => {
+        const wasActive = sw.classList.contains('active');
+        document.querySelectorAll('.pattern-swatch').forEach(s => s.classList.remove('active'));
+        if (!wasActive) {
+          sw.classList.add('active');
+          state.patternKey = p.key;
+        } else {
+          state.patternKey = null;
+        }
+        renderCard();
+      });
+      patternGrid.appendChild(sw);
+    });
+
+    document.getElementById('patternOpacity').addEventListener('input', function() {
+      state.patternOpacity = this.value / 100;
+      document.getElementById('patternOpacityVal').textContent = this.value + '%';
+      renderCard();
+    });
+
+    // Draw colors
+    const drawColorsEl = document.getElementById('drawColors');
+    DRAW_COLORS.forEach(c => {
+      const sw = document.createElement('div');
+      sw.className = 'draw-color' + (c === state.drawColor ? ' active' : '');
+      sw.style.background = c;
+      sw.addEventListener('click', () => {
+        document.querySelectorAll('.draw-color').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        state.drawColor = c;
+        if (state.tool === 'eraser') {
+          document.getElementById('toolPen').click();
+        }
+      });
+      drawColorsEl.appendChild(sw);
+    });
+
+    // Brush controls
+    document.getElementById('brushSize').addEventListener('input', function() {
+      state.brushSize = +this.value;
+      document.getElementById('brushSizeVal').textContent = this.value + 'px';
+    });
+
+    document.getElementById('brushOpacity').addEventListener('input', function() {
+      state.brushOpacity = this.value / 100;
+      document.getElementById('brushOpacityVal').textContent = this.value + '%';
+    });
+
+    // Tools
+    ['toolPen','toolMarker','toolSpray','toolEraser'].forEach(id => {
+      document.getElementById(id).addEventListener('click', function() {
+        document.querySelectorAll('.draw-tool').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        state.tool = id.replace('tool','').toLowerCase();
+      });
+    });
+
+    // Material chips
+    document.querySelectorAll('.material-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.material-chip').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        state.material = this.dataset.material;
+        renderCard();
+      });
+    });
+
+    // Tab switcher
+    document.querySelectorAll('.studio-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.studio-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.studio-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Name input
+    document.getElementById('cardNameInput').addEventListener('input', function() {
+      document.getElementById('cardHolderName').textContent = this.value.toUpperCase() || 'YOUR NAME';
+    });
+
+    // Undo / clear
+    document.getElementById('undoBtn').addEventListener('click', () => {
+      if (state.history.length > 0) {
+        const imgData = state.history.pop();
+        ctx.putImageData(imgData, 0, 0);
+      } else {
+        renderCard();
+      }
+    });
+
+    document.getElementById('clearDrawBtn').addEventListener('click', () => {
+      saveHistory();
+      renderCard();
+    });
+
+    // Download
+    document.getElementById('downloadCardBtn').addEventListener('click', () => {
+      // Merge canvas + overlay into a download
+      const dl = document.createElement('a');
+      dl.download = 'stc-bank-card-2026.png';
+      dl.href = canvas.toDataURL('image/png');
+      dl.click();
+    });
+
+    // ── Render ─────────────────────────────────────────────────────────────
+
+    function renderCard() {
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // Clear
+      ctx.clearRect(0, 0, W, H);
+
+      // Background
+      if (state.bgType === 'solid') {
+        ctx.fillStyle = state.bgValue || '#050310';
+        ctx.fillRect(0, 0, W, H);
+      } else {
+        const grad = ctx.createLinearGradient(0, 0, W, H);
+        const stops = state.bgValue || GRADIENTS[15].stops;
+        stops.forEach((s, i) => grad.addColorStop(i / (stops.length - 1), s));
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      // Material effects
+      if (state.material === 'matte') {
+        ctx.fillStyle = 'rgba(0,0,0,0.18)';
+        ctx.fillRect(0, 0, W, H);
+        document.getElementById('cardShine').style.opacity = '0.2';
+      } else if (state.material === 'metal') {
+        // brushed metal lines
+        for (let y = 0; y < H; y += 3) {
+          ctx.strokeStyle = `rgba(255,255,255,${Math.random() * 0.03 + 0.01})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+        // diagonal shine
+        const mg = ctx.createLinearGradient(0, 0, W * 0.6, H * 0.6);
+        mg.addColorStop(0, 'rgba(255,255,255,0.18)');
+        mg.addColorStop(0.3, 'rgba(255,255,255,0.04)');
+        mg.addColorStop(1, 'transparent');
+        ctx.fillStyle = mg;
+        ctx.fillRect(0, 0, W, H);
+        document.getElementById('cardShine').style.opacity = '0.5';
+      } else if (state.material === 'glow') {
+        const gg = ctx.createRadialGradient(W*0.5, H*0.5, 20, W*0.5, H*0.5, W*0.6);
+        gg.addColorStop(0, 'rgba(0,191,165,0.25)');
+        gg.addColorStop(0.5, 'rgba(91,13,190,0.15)');
+        gg.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gg;
+        ctx.fillRect(0, 0, W, H);
+        document.getElementById('cardShine').style.opacity = '0.6';
+      } else {
+        document.getElementById('cardShine').style.opacity = '0.4';
+      }
+
+      // Pattern overlay
+      if (state.patternKey) {
+        drawPattern(state.patternKey, W, H);
+      }
+    }
+
+    function drawPattern(key, W, H) {
+      ctx.save();
+      ctx.globalAlpha = state.patternOpacity;
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+
+      if (key === 'stars') {
+        for (let i = 0; i < 120; i++) {
+          const x = Math.random() * W;
+          const y = Math.random() * H;
+          const r = Math.random() * 2 + 0.5;
+          ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+        }
+        // larger stars
+        for (let i = 0; i < 20; i++) {
+          const x = Math.random() * W;
+          const y = Math.random() * H;
+          drawStar(x, y, 4, 2, 4);
+        }
+      } else if (key === 'dots') {
+        ctx.lineWidth = 0;
+        const spacing = 28;
+        for (let x = spacing/2; x < W; x += spacing) {
+          for (let y = spacing/2; y < H; y += spacing) {
+            ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI*2); ctx.fill();
+          }
+        }
+      } else if (key === 'lines') {
+        ctx.lineWidth = 0.8;
+        for (let y = 0; y < H; y += 18) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+      } else if (key === 'grid') {
+        ctx.lineWidth = 0.5;
+        for (let x = 0; x < W; x += 28) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+        }
+        for (let y = 0; y < H; y += 28) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+      } else if (key === 'waves') {
+        ctx.lineWidth = 1.5;
+        for (let y = 20; y < H; y += 28) {
+          ctx.beginPath();
+          for (let x = 0; x <= W; x += 4) {
+            const wy = y + Math.sin((x / W) * Math.PI * 6) * 8;
+            x === 0 ? ctx.moveTo(x, wy) : ctx.lineTo(x, wy);
+          }
+          ctx.stroke();
+        }
+      } else if (key === 'hex') {
+        const s = 22;
+        const h = s * Math.sqrt(3);
+        ctx.lineWidth = 0.8;
+        for (let row = -1; row < H/h + 2; row++) {
+          for (let col = -1; col < W/(s*1.5) + 2; col++) {
+            const cx = col * s * 1.5 + (row % 2 === 0 ? 0 : s * 0.75);
+            const cy = row * h * 0.5 + h/2;
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+              const angle = Math.PI/180 * (60*i - 30);
+              const px = cx + s * Math.cos(angle);
+              const py = cy + s * Math.sin(angle);
+              i === 0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+            }
+            ctx.closePath(); ctx.stroke();
+          }
+        }
+      } else if (key === 'circuit') {
+        ctx.lineWidth = 1;
+        // horizontal traces
+        for (let y = 40; y < H; y += 55) {
+          ctx.beginPath(); ctx.moveTo(0, y);
+          let x = 0;
+          while (x < W) {
+            const len = 30 + Math.random() * 60;
+            ctx.lineTo(x + len, y);
+            const goDown = Math.random() > 0.5;
+            if (goDown && y + 30 < H) {
+              ctx.lineTo(x + len, y + 30);
+              ctx.lineTo(x + len + 20, y + 30);
+            }
+            x += len + 25 + Math.random() * 30;
+          }
+          ctx.stroke();
+        }
+        // nodes
+        for (let i = 0; i < 20; i++) {
+          const x = 20 + Math.random() * (W - 40);
+          const y = 20 + Math.random() * (H - 40);
+          ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2); ctx.fill();
+        }
+      } else if (key === 'cross') {
+        ctx.lineWidth = 0.8;
+        const sp = 32;
+        for (let x = sp/2; x < W; x += sp) {
+          for (let y = sp/2; y < H; y += sp) {
+            const s2 = 5;
+            ctx.beginPath();
+            ctx.moveTo(x - s2, y); ctx.lineTo(x + s2, y);
+            ctx.moveTo(x, y - s2); ctx.lineTo(x, y + s2);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.restore();
+    }
+
+    function drawStar(cx, cy, outerR, innerR, points) {
+      ctx.beginPath();
+      for (let i = 0; i < points * 2; i++) {
+        const r = i % 2 === 0 ? outerR : innerR;
+        const a = (i * Math.PI) / points - Math.PI / 2;
+        i === 0 ? ctx.moveTo(cx + r*Math.cos(a), cy + r*Math.sin(a))
+                : ctx.lineTo(cx + r*Math.cos(a), cy + r*Math.sin(a));
+      }
+      ctx.closePath(); ctx.fill();
+    }
+
+    // ── Drawing on canvas ──────────────────────────────────────────────────
+
+    function saveHistory() {
+      if (state.history.length >= state.maxHistory) state.history.shift();
+      state.history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY,
+      };
+    }
+
+    function startDraw(e) {
+      // Only draw when on draw tab
+      if (!document.getElementById('tab-draw').classList.contains('active')) return;
+      e.preventDefault();
+      saveHistory();
+      state.isDrawing = true;
+      const pos = getPos(e);
+      state.lastX = pos.x;
+      state.lastY = pos.y;
+      if (state.tool === 'spray') {
+        sprayAt(pos.x, pos.y);
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }
+    }
+
+    function draw(e) {
+      if (!state.isDrawing) return;
+      e.preventDefault();
+      const pos = getPos(e);
+
+      if (state.tool === 'spray') {
+        sprayAt(pos.x, pos.y);
+        return;
+      }
+
+      ctx.save();
+      ctx.globalAlpha = state.brushOpacity;
+      ctx.lineWidth = state.brushSize;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      if (state.tool === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.strokeStyle = 'rgba(0,0,0,1)';
+        ctx.lineWidth = state.brushSize * 2;
+      } else if (state.tool === 'marker') {
+        ctx.globalAlpha = Math.min(state.brushOpacity, 0.5);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = state.drawColor;
+        ctx.lineWidth = state.brushSize * 2.5;
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = state.drawColor;
+      }
+
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+      ctx.restore();
+
+      state.lastX = pos.x;
+      state.lastY = pos.y;
+    }
+
+    function sprayAt(x, y) {
+      ctx.save();
+      ctx.globalAlpha = 0.06 * state.brushOpacity;
+      ctx.fillStyle = state.drawColor;
+      const radius = state.brushSize * 2.5;
+      for (let i = 0; i < 30; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * radius;
+        ctx.beginPath();
+        ctx.arc(x + dist * Math.cos(angle), y + dist * Math.sin(angle), 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    function endDraw() {
+      state.isDrawing = false;
+      ctx.beginPath();
+    }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', endDraw);
+    canvas.addEventListener('mouseleave', endDraw);
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', endDraw);
+
+    // 3D tilt on hover
+    card3dWrap.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      cardFace.style.transform = `rotateY(${x * 18}deg) rotateX(${-y * 12}deg)`;
+    });
+    card3dWrap.addEventListener('mouseleave', function() {
+      cardFace.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+
+    // ── Initial render ─────────────────────────────────────────────────────
+    state.bgType = 'gradient';
+    state.bgValue = GRADIENTS[15].stops; // INVENU gradient as default
+    renderCard();
+
+  })(); // end card studio
+
+</script>
+
+</body>
+</html>
